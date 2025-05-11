@@ -7,5 +7,5 @@ Timer ini berfungsi sebagai pelawan rasa kemalasan yang hebat, jadi dengan mengg
 - ✅ Timer
 - ✅ Alert
 
-## Teknologi yang Digunakan
+## 🛠 Teknologi yang Digunakan
 - HTML / CSS / JavaScript
