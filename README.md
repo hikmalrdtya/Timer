@@ -72,6 +72,33 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine (whi
 
 ---
 
+## 📂 File Structure
+---
+```text
+TIMER/
+├── assets/               
+├── fonts/               
+├── node_modules/        
+├── preview/             
+│   ├── 1.png
+│   ├── 2.png
+│   └── 3.png
+├── src/               
+│   ├── css/
+│   │   └── input.css   
+│   └── public/
+│       ├── dist/
+│       │   └── output.css  
+│       └── index.html      
+│       └── main.js
+├── .gitignore           
+├── main.js               
+├── package-lock.json    
+├── package.json
+├── LICENSE  
+└── README.md
+```
+---
 ## 🎨 Customization
 
 The application's theme and core visual properties can be easily customized without a `tailwind.config.js` file, thanks to CSS Variables.
