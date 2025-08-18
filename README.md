@@ -2,6 +2,13 @@
 
 A retro-styled, multi-function timer application designed to help you manage time for work, study, and personal projects. Built with vanilla JavaScript and styled with Tailwind CSS.
 
+![App Screenshot](preview/1.png) 
+---
+![App Screenshot](preview/2.png)
+---
+![App Screenshot](preview/3.png) 
+---
+
 ## ✨ Features
 
 - **Three Timer Modes:** Easily switch between different timing methods.
