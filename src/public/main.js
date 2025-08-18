@@ -4,14 +4,13 @@ let savedInterval = null;
 let alertSource = null;
 
 // Nav
-// Elemen Utama untuk Theming
 const body = document.body;
 const textHeader = document.querySelector("#textHeader");
 const watch = document.querySelector(".wrapper-date");
-const allNavButtons = document.querySelectorAll(".nav-button"); // Perlu class .nav-button di HTML
+const allNavButtons = document.querySelectorAll(".nav-button");
 const mobileMenuContainer = document.querySelector("#menuContainer");
 
-// Elemen Konten
+// Element Coontent
 const contents = {
   pomodoro: document.querySelector(".pomodoro-content"),
   stopwatch: document.querySelector(".stopwatch-content"),
@@ -19,9 +18,6 @@ const contents = {
 };
 
 function updateTheme(mode) {
-  // mode: 'pomodoro', 'stopwatch', atau 'timer'
-
-  // --- 1. RESET: Hapus semua class tema yang mungkin ada dari semua elemen ---
   body.classList.remove("bg-pomodoro", "bg-stopwatch", "bg-timer");
   watch.classList.remove(
     "bg-[var(--color-orange)]",
@@ -42,7 +38,6 @@ function updateTheme(mode) {
     );
   });
 
-  // --- 2. APPLY: Tambahkan class tema baru berdasarkan mode yang dipilih ---
   if (mode === "pomodoro") {
     body.classList.add("bg-pomodoro");
     watch.classList.add("bg-[var(--color-orange)]");
@@ -60,16 +55,12 @@ function updateTheme(mode) {
   } else if (mode === "timer") {
     body.classList.add("bg-timer");
     watch.classList.add("bg-[var(--color-red)]");
-    textHeader.classList.add("text-[var(--color-red)]");
+    textHeader.classList.add("text-[var(--color-red-text)]");
     allNavButtons.forEach((nav) => nav.classList.add("bg-[var(--color-red)]"));
   }
 }
 
-// =========================================================================
-// NAVIGASI
-// =========================================================================
-
-// --- Navigasi Desktop ---
+// Nav Desktop
 const navLinks = document.querySelectorAll("#pomodoro, #stopwatch, #timer");
 navLinks.forEach((nav) => {
   nav.addEventListener("click", (e) => {
@@ -87,12 +78,11 @@ navLinks.forEach((nav) => {
     );
     contents[nav.id].classList.remove("hidden");
 
-    // Cukup panggil satu fungsi ini untuk mengubah semua style!
     updateTheme(nav.id);
   });
 });
 
-// --- Navigasi Mobile ---
+// Nav Mobile
 const prevArrow = document.getElementById("leftArrow");
 const nextArrow = document.getElementById("rightArrow");
 const menuItems = [
@@ -160,7 +150,7 @@ prevArrow.addEventListener("click", showPrevMenu);
 nextArrow.addEventListener("click", showNextMenu);
 updateArrow();
 
-// alert
+// Alert
 function showAlert(message, source) {
   clearInterval(interval);
   savedInterval = interval;
@@ -293,7 +283,6 @@ function startTimerPomodoro() {
         }
 
         updateDisplay();
-        // startTimerPomodoro();
       }
     }, 1000);
   }
@@ -371,10 +360,6 @@ function startStopwatch() {
   const minutes = parseInt(inputMinutes.value) || 0;
   const seconds = parseInt(inputSeconds.value) || 0;
 
-  // if (hours == 0 && minutes == 0 && seconds == 0) {
-  // 	showAlert("Isi Input Terlebih Dahulu!");
-  // 	return;
-  // }
   if (!isValid) {
     validateInput();
     return;

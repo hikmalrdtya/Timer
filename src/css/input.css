@@ -7,7 +7,6 @@
 
 @layer base {
   :root {
-    /* Definisikan semua nilai kustom Anda di sini sebagai Variabel CSS */
     --font-pixel-stack: 'pixel', "Segoe Ui", sans-serif, monospace;
     
     /* Palet Warna */
@@ -15,17 +14,17 @@
     --color-orange-light: #FFB600;
     --color-orange: #FF9F00;
     --color-red: #D7301F;
+    --color-red-text: #ff0000;
     --color-red-dark: #A80000;
     --color-alert: #FF595E;
     --color-green: #39FF14;
     --color-blue: #0099FF;
     --color-purple-light: #C56EBF;
-    --color-purple-dark: #FF00E5; /* Warna font dari stopwatch-style */
+    --color-purple-dark: #FF00E5;
     --color-off-white: #FFF1E0;
     --color-gray: #CCCCCC;
     --color-gray-dark: #444444;
 
-    /* Nilai Lain */
     --shadow-chunky: 4px 4px 0px #000;
   }
 
@@ -36,19 +35,16 @@
 }
 
 @layer components {
-  /* Class untuk tombol navigasi yang berulang */
   .nav-button {
     @apply py-1.5 px-3 list-none rounded-lg border-4 border-black no-underline transition-colors duration-300;
     /* Warna default (pomodoro) */
     @apply bg-[var(--color-orange-light)] shadow-[var(--shadow-chunky)] text-black;
   }
   
-  /* Class untuk tombol aksi utama (Start, Stop, Reset) */
   .btn {
   @apply cursor-pointer w-1/4 h-12 text-lg leading-4 border-4 border-black rounded-md shadow-[var(--shadow-chunky)] text-[var(--color-off-white)] active:scale-90 transition-transform duration-300 ease-in-out;
   }
   
-  /* Class untuk item di sisi kanan Pomodoro */
   .item-pomodoro {
     @apply bg-[var(--color-gray)] shadow-[var(--shadow-chunky)] border-4 border-black rounded-lg p-2 text-center;
   }
@@ -62,11 +58,11 @@
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    background-color: var(--color-off-white); /* Menggunakan variabel warna kita */
-    width: 33.333333%; /* Ini padanan untuk md:w-1/3 */
+    background-color: var(--color-off-white);
+    width: 33.333333%;
     height: 40vh;
     max-height: 40vh;
-    border-radius: 0.5rem; /* Ini padanan untuk rounded-lg */
+    border-radius: 0.5rem;
     border: 4px solid #000;
     box-shadow: 4px 4px 0px #000;
     overflow-y: auto;
@@ -81,7 +77,6 @@
 }
 
 @layer utilities {
-  /* Class untuk background body yang dinamis */
   .bg-pomodoro { background-image: url('/assets/village.webp'); }
   .bg-stopwatch { background-image: url('/assets/night.webp'); }
   .bg-timer { background-image: url('/assets/fall.webp'); }
