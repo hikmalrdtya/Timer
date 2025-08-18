@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="dist/output.css" rel="stylesheet" />
+    <title>Timer Malas</title>
+  </head>
+  <body class="bg-pomodoro text-black">
+    <header class="text-center cursor-default p-4">
+      <h1
+        id="textHeader"
+        class="text-4xl lg:text-5xl text-[var(--color-yellow)] transition-colors duration-300"
+      >
+        Timer Kemalasan
+      </h1>
+      <p class="mt-6">
+        Lawanlah Rasa Kemalasan Dengan Buka
+        <span class="text-blue-600">VSCode</span>
+      </p>
+
+      <nav class="hidden md:block w-full lg:w-3/4 xl:w-1/2 mx-auto mt-10">
+        <ul class="flex justify-between items-center list-none">
+          <li>
+            <a id="pomodoro" href="#" class="nav-button active"
+              >Pomodoro Timer</a
+            >
+          </li>
+          <li><a id="stopwatch" href="#" class="nav-button">Stopwatch</a></li>
+          <li><a id="timer" href="#" class="nav-button">Timer</a></li>
+        </ul>
+      </nav>
+
+      <nav class="block md:hidden mt-4">
+        <ul class="flex justify-center items-center list-none">
+          <li>
+            <img
+              id="leftArrow"
+              src="../../assets/left-arrow.png"
+              class="w-16 h-auto cursor-pointer"
+            />
+          </li>
+          <div
+            id="menuContainer"
+            class="nav-button w-1/2 flex justify-center items-center mx-4"
+          >
+            <li><a id="pomodoroMobile" href="#">Pomodoro</a></li>
+            <li>
+              <a id="stopwatchMobile" href="#" class="hidden">Stopwatch</a>
+            </li>
+            <li><a id="timerMobile" href="#" class="hidden">Timer</a></li>
+          </div>
+          <li>
+            <img
+              id="rightArrow"
+              src="../../assets/right-arrow.png"
+              class="w-16 h-auto cursor-pointer"
+            />
+          </li>
+        </ul>
+      </nav>
+
+      <div
+        class="wrapper-alert hidden fixed top-0 left-0 w-full h-full backdrop-blur-sm bg-black/30 flex justify-center items-center z-50"
+      >
+        <div
+          id="custom-alert"
+          class="cursor-default bg-[var(--color-orange-light)] text-black p-5 border-4 border-black shadow-[var(--shadow-chunky)]"
+        >
+          <p id="alert-msg">Saatnya Istirahat</p>
+          <button
+            onclick="closeAlert()"
+            class="mt-4 bg-[var(--color-alert)] text-white border-4 border-black py-1 px-5 font-pixel cursor-pointer"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="mt-6">
+      <div
+        class="pomodoro-content w-11/12 lg:w-4/5 xl:w-[70%] mx-auto text-center"
+      >
+        <div
+          class="flex flex-col md:flex-row justify-center md:justify-evenly items-center mt-8 gap-8"
+        >
+          <div
+            class="pomodoro-timer w-full md:w-1/2 p-4 bg-[var(--color-orange)] shadow-[var(--shadow-chunky)] rounded-lg border-4 border-black cursor-default"
+          >
+            <h3 class="wave-text text-[var(--color-off-white)] text-2xl">
+              Pomodoro Timer
+            </h3>
+            <div class="mt-5 w-full h-12 mx-auto rounded-lg">
+              <div
+                class="bg-black w-[70%] mx-auto text-[var(--color-off-white)] text-xl rounded-lg text-center py-1.5 px-3"
+              >
+                <p class="clock tracking-[.4em]">25:00</p>
+              </div>
+            </div>
+            <p
+              id="detailPomodoro"
+              class="mt-4 mb-8 text-[var(--color-red-dark)] animate-shake"
+            >
+              Focus Time
+            </p>
+            <div
+              class="w-full flex justify-center gap-x-4 items-center mx-auto"
+            >
+              <button
+                id="startPomodoro"
+                class="btn bg-[var(--color-green)] w-1/3"
+              >
+                Start
+              </button>
+              <button id="stopPomodoro" class="btn bg-red-600 w-1/3">
+                Stop
+              </button>
+              <button id="resetPomodoro" class="btn bg-gray-700 w-1/3">
+                Reset
+              </button>
+            </div>
+          </div>
+          <div
+            class="w-full md:w-auto grid grid-cols-3 md:grid-cols-1 items-end gap-2 md:gap-4 cursor-default"
+          >
+            <div>
+              <p class="text-item-pomodoro focus">Focus:</p>
+              <div class="item-pomodoro"><p>25 Min</p></div>
+            </div>
+            <div>
+              <p class="text-item-pomodoro break">Break Time:</p>
+              <div class="item-pomodoro"><p>5 Min</p></div>
+            </div>
+            <div>
+              <p class="text-item-pomodoro long">Long Break:</p>
+              <div class="item-pomodoro"><p>15 Min</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="stopwatch-content hidden w-11/12 lg:w-4/5 xl:w-[80%] mx-auto text-center"
+      >
+        <div
+          class="flex flex-col-reverse md:flex-row justify-center md:justify-evenly items-center mt-8 gap-8 w-full"
+        >
+          <div
+            class="w-full md:w-1/2 h-60 p-4 bg-[var(--color-purple-light)] shadow-[var(--shadow-chunky)] rounded-lg border-4 border-black cursor-default flex flex-col justify-center items-center"
+          >
+            <h3 class="wave-text text-2xl mb-4 text-white">Stopwatch</h3>
+            <div
+              class="bg-[#68245F] w-[70%] md:w-1/2 text-center rounded-lg border-4 border-black py-1.5 px-3"
+            >
+              <p
+                id="stopwatchTimer"
+                class="text-xl tracking-widest text-[var(--color-off-white)]"
+              >
+                00:00:00
+              </p>
+            </div>
+            <div
+              class="button-stopwatch mt-4 w-full md:w-4/5 flex justify-center items-center gap-x-4"
+            >
+              <button
+                id="startStopwatch"
+                class="btn bg-[var(--color-green)] w-1/3"
+              >
+                Start
+              </button>
+              <button
+                id="stopStopwatch"
+                class="btn w-1/3 bg-red-600"
+              >
+                Stop
+              </button>
+              <button id="resetStopwatch" class="btn w-1/3 bg-gray-700">
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="input-stopwatch w-full md:w-auto grid grid-cols-3 grid-rows-2 gap-4 text-center text-white"
+          >
+            <div class="input-hours text-yellow-300">
+              <label class="hours">Hours:</label><br />
+              <input
+                type="number"
+                name="hours"
+                min="0"
+                max="999"
+                placeholder="0"
+                class="stopwatch-input text-black border-4 border-yellow-300 text-center mt-3"
+              />
+            </div>
+            <div
+              class="input-minutes md:col-start-2 md:row-start-1 text-red-700"
+            >
+              <label class="minutes">Minutes:</label><br />
+              <input
+                type="number"
+                name="minutes"
+                min="0"
+                max="59"
+                placeholder="0"
+                class="stopwatch-input text-black border-4 border-red-700 text-center mt-3"
+              />
+            </div>
+            <div
+              class="input-seconds md:col-start-3 md:row-start-1 text-[#0dfb00]"
+            >
+              <label class="seconds">Seconds:</label><br />
+              <input
+                type="number"
+                name="seconds"
+                min="0"
+                max="59"
+                placeholder="0"
+                class="stopwatch-input text-black border-4 border-[#0dfb00] text-center mt-3"
+              />
+            </div>
+            <button
+              id="submit"
+              class="btn !w-auto md:col-start-2 md:row-start-2 bg-[var(--color-green)]"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="timer-content hidden w-11/12 lg:w-4/5 xl:w-[80%] mx-auto text-center"
+      >
+        <div
+          class="flex flex-col md:flex-row justify-center md:justify-evenly md:items-stretch mt-8 gap-8 w-full"
+        >
+          <div
+            class="w-full md:w-1/2 p-4 bg-[var(--color-red)] shadow-[var(--shadow-chunky)] rounded-lg border-4 border-black cursor-default flex flex-col justify-center items-center"
+          >
+            <h3 class="wave-text text-2xl mb-4 text-white">Timer</h3>
+            <div
+              class="bg-[var(--color-orange-dark)] w-[70%] md:w-1/2 text-center rounded-lg border-4 border-black py-1.5 px-3"
+            >
+              <p
+                id="displayTimer"
+                class="text-xl tracking-widest text-[var(--color-off-white)]"
+              >
+                00:00:00
+              </p>
+            </div>
+            <div
+              class="button-timer mt-4 w-full md:w-11/12 grid grid-cols-2 gap-4"
+            >
+              <button
+                id="startTimer"
+                class="btn w-full bg-[var(--color-green)]"
+              >
+                Start
+              </button>
+              <button
+                id="stopTimer"
+                class="btn w-full bg-[var(--color-gray-dark)]"
+              >
+                Stop
+              </button>
+              <button id="resetTimer" class="btn w-full bg-crimson">
+                Reset
+              </button>
+              <button id="checkTimer" class="btn w-full bg-[var(--color-blue)]">
+                Check
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="wrapper-checkpoint w-full md:w-1/3 p-4 bg-[var(--color-off-white)] shadow-[var(--shadow-chunky)] rounded-lg border-4 border-black overflow-y-auto cursor-default"
+          >
+            <h3 class="text-xl mb-2 text-center">Your Checkpoint</h3>
+            <ul class="w-full text-left"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="wrapper-date md:w-[50%] mx-auto md:mx-0 my-4 p-2 md:px-4 cursor-default bg-[var(--color-orange)] text-center md:text-left rounded-lg tracking-[.3rem] border-4 border-black shadow-[var(--shadow-chunky)] transition-colors duration-300"
+      >
+        <p id="date">00:00:00</p>
+      </div>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>

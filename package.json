@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.12",
+    "tailwindcss": "^4.1.12"
+  },
+  "name": "timer",
+  "version": "1.0.0",
+  "description": "Timer ini berfungsi sebagai pelawan rasa kemalasan yang hebat, jadi dengan menggunakan timer ini maka rasa malas akan hilang secepat kilat.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/css/input.css -o ./src/public/dist/output.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hikmalrdtya/Timer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hikmalrdtya/Timer/issues"
+  },
+  "homepage": "https://github.com/hikmalrdtya/Timer#readme"
+}
