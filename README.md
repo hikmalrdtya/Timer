@@ -1,6 +1,6 @@
 # Pixel Art Multi-Timer
 
-A retro-styled, multi-function timer application designed to help you manage time for work, study, and personal projects. Built with vanilla JavaScript and styled with Tailwind CSS.
+A retro-styled, multi-function timer application designed to help you manage time for work, study, and personal projects. Built with vanilla JavaScript and styled with Tailwind.
 
 ![App Screenshot](preview/1.png) 
 ---
